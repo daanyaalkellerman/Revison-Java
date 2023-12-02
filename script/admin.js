@@ -27,6 +27,7 @@ let item2 = new Constructor(2,'AnotherNike','This is another nike',700,'https://
 
 //pushes items into array
 items.push(object1, item2);
+
 function favourite(){
 
     //localstorage will be run in an add/submit item function
@@ -65,7 +66,10 @@ function daanyaal(){
         table.innerHTML = products.join('')
 
 
-    }daanyaal()
+    }
+    daanyaal()
+
+
 table.addEventListener('click',function(){
     //event.target will pick up every click
     //class of delete classList lets you call on the class specifically
@@ -75,7 +79,10 @@ table.addEventListener('click',function(){
         remove(event.target.value,daanyaal())
     }
 })
+
+
 let deleteButton = document.querySelector('.delete')
+
 function remove(position){
     items.splice(position,1)
     //sets the data in the localstorage/NESTED FUNCTION
