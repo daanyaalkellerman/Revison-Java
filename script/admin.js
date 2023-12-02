@@ -27,7 +27,15 @@ let item2 = new Constructor(2,'AnotherNike','This is another nike',700,'https://
 
 //pushes items into array
 items.push(object1, item2);
+function favourite(){
 
+    //localstorage will be run in an add/submit item function
+        //sets the array in local storage
+        localStorage.setItem('items',JSON.stringify(items));
+        //sets array from the local storage tp array(items) in code
+        //JSON.parse turns the string into an object
+        items = JSON.parse(localStorage.getItem('items'));
+}
 //getting the tag
 let table = document.querySelector('table')
 //setting data to variable and display>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -57,35 +65,27 @@ function daanyaal(){
         table.innerHTML = products.join('')
 
 
-        let deleteButton = document.querySelector('.delete')
-        function remove(position){
-           items.splice(position,1)
-           //sets the data in the localstorage/NESTED FUNCTION
-           favourite()
-           //call the function to view the data resetting the array /NESTED FUNCTION
-           daanyaal()
-        }
-        table.addEventListener('click',function(){
-            //event.target will pick up every click
-            //class of delete classList lets you call on the class specifically
-            if(event.target.classList.contains('delete')){
-                //event.target targets your button accessing the value
-            //    alert(event.target.value)
-                remove(event.target.value,daanyaal())
-            }
-        })
-}daanyaal()
+    }daanyaal()
+table.addEventListener('click',function(){
+    //event.target will pick up every click
+    //class of delete classList lets you call on the class specifically
+    if(event.target.classList.contains('delete')){
+        //event.target targets your button accessing the value
+        //    alert(event.target.value)
+        remove(event.target.value,daanyaal())
+    }
+})
+let deleteButton = document.querySelector('.delete')
+function remove(position){
+    items.splice(position,1)
+    //sets the data in the localstorage/NESTED FUNCTION
+    favourite()
+    //call the function to view the data resetting the array /NESTED FUNCTION
+    daanyaal()
+}
 
 //localstorage function
-function favourite(){
-    //localstorage will be run in an add/submit item function
-    //sets the array in local storage
-    localStorage.setItem('items',JSON.stringify(items));
-    //sets array from the local storage tp array(items) in code
-    //JSON.parse turns the string into an object
-    items = JSON.parse(localStorage.getItem('items'));
 
-}
 //to style in javascript
 table.style.backgroundColor='teal'
 //SPINNER!!!!!>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>

@@ -26,3 +26,9 @@ main.addEventListener('click', function(){
         add(event.target.value)
     }
 })
+
+//search
+//input must compare to what they search
+let a = items.filter(item =>{
+    return item.name == 'Nike Shoe'
+})
